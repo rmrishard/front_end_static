@@ -1,11 +1,8 @@
-FROM node:22
+# 1. Start from a tiny web-server image
+FROM nginx:alpine
 
+# 2. Copy all your static files into Nginx’s public folder
+COPY . /usr/share/nginx/html
 
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
+# 3. (Optional) Expose port 80
+EXPOSE 80
